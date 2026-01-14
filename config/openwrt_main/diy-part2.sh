@@ -49,8 +49,12 @@ fi
 rm -rf package/luci-app-amlogic
 git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 #
+cd lede/package/lean
+rm -rf luci-theme-argon
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
+make menuconfig #choose LUCI->Theme->Luci-theme-argon
+make -j1 V=s
 # Apply patch
 # git apply ../config/patches/{0001*,0002*}.patch --directory=feeds/luci
 #
 # ------------------------------- Other ends -------------------------------
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
